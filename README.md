@@ -1,4 +1,4 @@
-# 🏥 Patient Monitoring System
+# 🏥 AI Based Patient Monitoring System
 
 A **cloud-native, real-time patient monitoring platform** that ingests, processes, and analyzes vital signs from connected medical devices. The system not only provides **real-time monitoring dashboards** but also delivers **predictive insights** powered by machine learning, enabling **early detection of potential health issues**.
 
