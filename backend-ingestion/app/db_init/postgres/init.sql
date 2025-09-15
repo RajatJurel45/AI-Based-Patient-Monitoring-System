@@ -34,12 +34,16 @@ CREATE TABLE IF NOT EXISTS vitals (
 -- Convert vitals into hypertable
 SELECT create_hypertable('vitals', 'recorded_at', if_not_exists => TRUE);
 
--- Initial seed data
-INSERT INTO patients (name, age, gender) VALUES
-('Rajat Jurel', 25, 'Male'),
-('Milind Bhardwaj', 26, 'Female');
+-- Seed 10,000 patients
+INSERT INTO patients (name, age, gender)
+SELECT 
+    'Patient_' || g,                          -- Names like Patient_1 ... Patient_10000
+    (FLOOR(RANDOM() * 60) + 20)::INT,         -- Age between 20–80
+    CASE WHEN RANDOM() < 0.5 THEN 'Male' ELSE 'Female' END
+FROM generate_series(1, 10000) g;
 
-INSERT INTO devices (patient_id, device_type) VALUES
-(1, 'Wearable HR Monitor'),
-(1, 'Oximeter'),
-(2, 'Wearable HR Monitor');
+-- Assign 2 devices per patient
+INSERT INTO devices (patient_id, device_type)
+SELECT id, 'Wearable HR Monitor' FROM patients;
+INSERT INTO devices (patient_id, device_type)
+SELECT id, 'Oximeter' FROM patients;
