@@ -1,0 +1,34 @@
+version: "3.8"
+services:
+  postgres:
+    image: timescale/timescaledb:latest-pg14
+    container_name: patient_postgres
+    environment:
+      POSTGRES_USER: admin
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: patientdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./backend-ingestion/app/db_init/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql:ro
+    restart: unless-stopped
+
+  mongodb:
+    image: mongo:6.0
+    container_name: patient_mongo
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: jurelrajat2001
+      MONGO_INITDB_ROOT_PASSWORD: Rajat@123
+      MONGO_INITDB_DATABASE: patient_mongo_db
+      
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+      - ./backend-ingestion/app/db_init/mongo/init.js:/docker-entrypoint-initdb.d/init.js:ro
+    restart: unless-stopped
+
+volumes:
+  postgres_data:
+  mongo_data:

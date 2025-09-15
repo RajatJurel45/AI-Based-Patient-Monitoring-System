@@ -1,4 +1,4 @@
-# 🏥 Patient Monitoring System
+# 🏥 AI BAsed Patient Monitoring System
 
 A **cloud-native, real-time patient monitoring platform** that ingests, processes, and analyzes vital signs from connected medical devices. The system not only provides **real-time monitoring dashboards** but also delivers **predictive insights** powered by machine learning, enabling **early detection of potential health issues**.
 
@@ -46,8 +46,8 @@ patient-monitoring-app/
 
 ### 1️⃣ Clone Repository  
 ```bash
-git clone https://github.com/your-org/patient-monitoring-app.git
-cd patient-monitoring-app
+git clone https://github.com/RajatJurel45/AI-Based-Patient-Monitoring-System.git
+cd AI-Based-Patient-Monitoring-System
 ```
 
 ### 2️⃣ Local Development (with Docker Compose)  
